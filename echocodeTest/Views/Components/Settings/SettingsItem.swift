@@ -13,13 +13,13 @@ struct SettingsItem<Content: View>: View {
     @ViewBuilder let destination: Content
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 16, style: .continuous)
-            .fill(.settingsLink)
-            .frame(height: 50)
-            .overlay {
-                NavigationLink {
-                    destination
-                } label: {
+        NavigationLink {
+            destination
+        } label: {
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(.settingsLink)
+                .frame(height: 50)
+                .overlay {
                     HStack {
                         Text(text).fontWeight(.semibold)
                         Spacer()
@@ -28,6 +28,6 @@ struct SettingsItem<Content: View>: View {
                     .foregroundStyle(.black)
                     .padding()
                 }
-            }
+        }
     }
 }

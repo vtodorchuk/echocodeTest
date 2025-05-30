@@ -9,26 +9,39 @@ import SwiftUI
 
 struct HomeView: View {
     @Binding var selectedTab: Int
+    @Binding var isTabBarVisable: Bool
     
-    @State private var viewModel = HomeViewModel()
+    @State private var petsViewModel = PetsViewModel()
+    @State private var speechRecordingViewModel = SpeechRecordingViewModel()
     
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .center) {
-                HomeHeaderView()
-                    .padding(.bottom, 58)
-    
-                ActionsView(viewModel: $viewModel)
-                SelectedPetView(selectedPet: $viewModel.selectedPet)
+        VStack(alignment: .center) {
+            Group {
+                if speechRecordingViewModel.isRecordingFinished {
+                    ResultView(petsViewModel: $petsViewModel, speechRecordingViewModel: $speechRecordingViewModel)
+                        .onAppear {
+                            isTabBarVisable = false
+                        }
+                } else {
+                    TranslatorView(petsViewModel: $petsViewModel, speechRecordingViewModel: $speechRecordingViewModel)
+                        .onAppear {
+                            isTabBarVisable = true
+                        }
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(BackgroudView())
+            
+            SelectedPetView(selectedPet: $petsViewModel.selectedPet)
+                .padding(.bottom, 60)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(BackgroudView())
     }
 }
 
 #Preview {
     @Previewable @State var selectedTab = 0
-    HomeView(selectedTab: $selectedTab)
+    @Previewable @State var isTabBarVisable = true
+    HomeView(selectedTab: $selectedTab, isTabBarVisable: $isTabBarVisable)
 }
 

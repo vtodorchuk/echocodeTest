@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Binding var selectedTab: Int
+    @Binding var isTabBarVisable: Bool
     
     @State private var settingsElements = [
         "Rate Us", "Share App", "Contact Us",
@@ -36,10 +37,14 @@ struct SettingsView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(BackgroudView())
         }
+        .onAppear {
+            isTabBarVisable = true
+        }
     }
 }
 
 #Preview {
     @Previewable @State var selectedTab = 0
-    SettingsView(selectedTab: $selectedTab)
+    @Previewable @State var isTabBarVisable = true
+    SettingsView(selectedTab: $selectedTab, isTabBarVisable: $isTabBarVisable)
 }

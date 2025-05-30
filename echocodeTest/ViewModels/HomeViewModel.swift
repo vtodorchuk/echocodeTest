@@ -7,17 +7,10 @@
 
 import Foundation
 import Observation
+import Speech
+import AVFoundation
 
 @Observable
-final class HomeViewModel {
+final class PetsViewModel {
     var selectedPet: Pets = .dog
-    var isRecording = false
-    
-    func startRecordingVoice() {
-        isRecording.toggle()
-    }
-    
-    func stopRecordingVoice() {
-        isRecording.toggle()
-    }
 }

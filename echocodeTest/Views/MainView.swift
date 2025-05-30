@@ -9,17 +9,20 @@ import SwiftUI
 
 struct MainView: View {
     @State var selectedTab = 0
+    @State var isTabBarVisable = true
     
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                HomeView(selectedTab: $selectedTab)
+                HomeView(selectedTab: $selectedTab, isTabBarVisable: $isTabBarVisable)
                     .tag(0)
-                SettingsView(selectedTab: $selectedTab)
+                SettingsView(selectedTab: $selectedTab, isTabBarVisable: $isTabBarVisable)
                     .tag(1)
             }
             
-            TabBarView(selectedTab: $selectedTab)
+            if isTabBarVisable {
+                TabBarView(selectedTab: $selectedTab)
+            }
         }
     }
 }

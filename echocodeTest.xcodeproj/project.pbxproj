@@ -10,9 +10,22 @@
 		3B9702CA2DE9BA8900475230 /* echocodeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = echocodeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3B97036E2DE9FE7B00475230 /* Exceptions for "echocodeTest" folder in "echocodeTest" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 3B9702C92DE9BA8900475230 /* echocodeTest */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3B9702CC2DE9BA8900475230 /* echocodeTest */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				3B97036E2DE9FE7B00475230 /* Exceptions for "echocodeTest" folder in "echocodeTest" target */,
+			);
 			path = echocodeTest;
 			sourceTree = "<group>";
 		};
@@ -255,6 +268,9 @@
 				DEVELOPMENT_TEAM = UFWAC43UAX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = echocodeTest/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow access to your mircophone to use the app’s features";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -285,6 +301,9 @@
 				DEVELOPMENT_TEAM = UFWAC43UAX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = echocodeTest/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow access to your mircophone to use the app’s features";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
