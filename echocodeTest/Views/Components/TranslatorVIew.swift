@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct TranslatorView: View {
-    @Environment(PetsViewModel.self) var petsViewModel
-    @Environment(SpeechRecordingViewModel.self) var speechRecordingViewModel
-    
     var body: some View {
         VStack {
             TranslatorHeaderView()
