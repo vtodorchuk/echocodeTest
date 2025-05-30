@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ActionsView: View {
-    @Binding var petsViewModel: PetsViewModel
-    @Binding var speechRecordingViewModel: SpeechRecordingViewModel
+    @Environment(PetsViewModel.self) var petsViewModel
+    @Environment(SpeechRecordingViewModel.self) var speechRecordingViewModel
     
     var body: some View {
         if !speechRecordingViewModel.transcribedText.isEmpty && speechRecordingViewModel.isRecording == false {
@@ -22,15 +22,15 @@ struct ActionsView: View {
                 
                 HStack(alignment: .center, spacing: 35) {
                     if speechRecordingViewModel.isRecording {
-                        RecordingButtonView(speechRecordingViewModel: $speechRecordingViewModel)
+                        RecordingButtonView()
                     } else {
-                        MicrophoneButtonView(speechRecordingViewModel: $speechRecordingViewModel)
+                        MicrophoneButtonView()
                     }
                     
                     GroupBoxBase(width: 107, height: 176, cornerRadius: 16, color: .white) {
                         VStack(alignment: .center) {
                             ForEach(Pets.allCases, id: \.self) { pet in
-                                PetButtonView(selectedPet: $petsViewModel.selectedPet, pet: pet, color: pet.color())
+                                PetButtonView(pet: pet, color: pet.color())
                             }
                         }
                     }
@@ -42,7 +42,5 @@ struct ActionsView: View {
 }
 
 #Preview {
-    @Previewable @State var viewModel = PetsViewModel()
-    @Previewable @State var speechRecordingViewModel =  SpeechRecordingViewModel()
-    ActionsView(petsViewModel: $viewModel, speechRecordingViewModel: $speechRecordingViewModel)
+    ActionsView()
 }

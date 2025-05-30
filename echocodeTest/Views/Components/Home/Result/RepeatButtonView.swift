@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RepeatButtonView: View {
-    @Binding var speechRecordingViewModel: SpeechRecordingViewModel
+    @Environment(SpeechRecordingViewModel.self) var speechRecordingViewModel
     
     var body: some View {
         Button {
@@ -32,6 +32,5 @@ struct RepeatButtonView: View {
 }
 
 #Preview {
-    @Previewable @State var speechRecordingViewModel = SpeechRecordingViewModel()
-    RepeatButtonView(speechRecordingViewModel: $speechRecordingViewModel)
+    RepeatButtonView()
 }

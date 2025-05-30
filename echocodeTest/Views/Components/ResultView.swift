@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ResultView: View {
-    @Binding var petsViewModel: PetsViewModel
-    @Binding var speechRecordingViewModel: SpeechRecordingViewModel
+    @Environment(PetsViewModel.self) var petsViewModelEnvironment
+    @Environment(SpeechRecordingViewModel.self) var speechRecordingViewModel
     
     var body: some View {
         VStack {
-            ResultHeaderView(speechRecordingViewModel: $speechRecordingViewModel)
+            ResultHeaderView()
             Spacer()
             Spacer()
             if speechRecordingViewModel.transcribedText.isEmpty {
-                RepeatButtonView(speechRecordingViewModel: $speechRecordingViewModel)
+                RepeatButtonView()
             } else {
                 MessageView(transcribedText: speechRecordingViewModel.transcribedText)
             }
@@ -28,7 +28,5 @@ struct ResultView: View {
 }
 
 #Preview {
-    @Previewable @State var viewModel = PetsViewModel()
-    @Previewable @State var speechRecordingViewModel = SpeechRecordingViewModel()
-    ResultView(petsViewModel: $viewModel, speechRecordingViewModel: $speechRecordingViewModel)
+    ResultView()
 }

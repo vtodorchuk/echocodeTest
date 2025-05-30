@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ResultHeaderView: View {
-    @Binding var speechRecordingViewModel: SpeechRecordingViewModel
+    @Environment(SpeechRecordingViewModel.self) var speechRecordingViewModel
     
     var body: some View {
         HStack {
@@ -42,6 +42,5 @@ struct ResultHeaderView: View {
 }
 
 #Preview {
-    @Previewable @State var speechRecordingViewModel = SpeechRecordingViewModel()
-    ResultHeaderView(speechRecordingViewModel: $speechRecordingViewModel)
+    ResultHeaderView()
 }

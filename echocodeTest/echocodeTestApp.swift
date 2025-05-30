@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct echocodeTestApp: App {
+    @State private var petsViewModel = PetsViewModel()
+    @State private var speechRecordingViewModel = SpeechRecordingViewModel()
+    
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environment(petsViewModel)
+                .environment(speechRecordingViewModel)
         }
     }
 }

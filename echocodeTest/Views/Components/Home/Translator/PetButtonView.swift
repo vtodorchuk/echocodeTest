@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct PetButtonView: View {
-    @Binding var selectedPet: Pets
-    
+    @Environment(PetsViewModel.self) var petsViewModel
+
     var pet: Pets
     var color: Color
     
     func petSelected(name: String) -> Bool {
-        selectedPet.rawValue == name
+        petsViewModel.selectedPet.rawValue == name
     }
     
     var body: some View {
         GroupBoxBase(width: 70, height: 70, cornerRadius: 16, color: color) {
             Button {
                 withAnimation {
-                    selectedPet = pet
+                    petsViewModel.selectedPet = pet
                 }
             } label: {
                 Image(pet.rawValue)
@@ -34,6 +34,5 @@ struct PetButtonView: View {
 }
 
 #Preview {
-    @Previewable @State var selectedPet: Pets = .dog
-    PetButtonView(selectedPet: $selectedPet, pet: .dog, color: .lightGreen)
+    PetButtonView(pet: .dog, color: .lightGreen)
 }

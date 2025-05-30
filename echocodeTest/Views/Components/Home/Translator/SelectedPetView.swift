@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SelectedPetView: View {
-    @Binding var selectedPet: Pets
+    var selectedPet: Pets
     
     var body: some View {
         Image(selectedPet.rawValue)
@@ -18,6 +18,5 @@ struct SelectedPetView: View {
 }
 
 #Preview {
-    @Previewable @State var selectedPet: Pets = .dog
-    SelectedPetView(selectedPet: $selectedPet)
+    SelectedPetView(selectedPet: .dog)
 }

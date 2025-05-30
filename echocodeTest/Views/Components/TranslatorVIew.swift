@@ -8,24 +8,17 @@
 import SwiftUI
 
 struct TranslatorView: View {
-    @Binding var petsViewModel: PetsViewModel
-    @Binding var speechRecordingViewModel: SpeechRecordingViewModel
-    
+    @Environment(PetsViewModel.self) var petsViewModel
+    @Environment(SpeechRecordingViewModel.self) var speechRecordingViewModel
     
     var body: some View {
         VStack {
             TranslatorHeaderView()
-            ActionsView(
-                petsViewModel: $petsViewModel,
-                speechRecordingViewModel: $speechRecordingViewModel
-            )
+            ActionsView()
         }
     }
 }
 
 #Preview {
-    @Previewable @State var viewModel = PetsViewModel()
-    @Previewable @State var speechRecordingViewModel =  SpeechRecordingViewModel()
-    
-    TranslatorView(petsViewModel: $viewModel, speechRecordingViewModel: $speechRecordingViewModel)
+    TranslatorView()
 }

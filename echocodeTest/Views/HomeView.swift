@@ -11,19 +11,19 @@ struct HomeView: View {
     @Binding var selectedTab: Int
     @Binding var isTabBarVisable: Bool
     
-    @State private var petsViewModel = PetsViewModel()
-    @State private var speechRecordingViewModel = SpeechRecordingViewModel()
+    @Environment(PetsViewModel.self) var petsViewModel
+    @Environment(SpeechRecordingViewModel.self) var speechRecordingViewModel
     
     var body: some View {
         VStack(alignment: .center) {
             Group {
                 if speechRecordingViewModel.isRecordingFinished {
-                    ResultView(petsViewModel: $petsViewModel, speechRecordingViewModel: $speechRecordingViewModel)
+                    ResultView()
                         .onAppear {
                             isTabBarVisable = false
                         }
                 } else {
-                    TranslatorView(petsViewModel: $petsViewModel, speechRecordingViewModel: $speechRecordingViewModel)
+                    TranslatorView()
                         .onAppear {
                             isTabBarVisable = true
                         }
@@ -31,7 +31,7 @@ struct HomeView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
-            SelectedPetView(selectedPet: $petsViewModel.selectedPet)
+            SelectedPetView(selectedPet: petsViewModel.selectedPet)
                 .padding(.bottom, 60)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecordingButtonView: View {
-    @Binding var speechRecordingViewModel: SpeechRecordingViewModel
+    @Environment(SpeechRecordingViewModel.self) var speechRecordingViewModel
     
     var body: some View {
         Button {
@@ -38,6 +38,5 @@ struct RecordingButtonView: View {
     }
 }
 #Preview {
-    @Previewable @State var speechRecordingViewModel = SpeechRecordingViewModel()
-    RecordingButtonView(speechRecordingViewModel: $speechRecordingViewModel)
+    RecordingButtonView()
 }
