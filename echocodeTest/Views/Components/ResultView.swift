@@ -29,4 +29,6 @@ struct ResultView: View {
 
 #Preview {
     ResultView()
+        .environment(PetsViewModel())
+        .environment(SpeechRecordingViewModel())
 }

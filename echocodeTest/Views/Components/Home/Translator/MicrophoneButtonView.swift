@@ -35,4 +35,5 @@ struct MicrophoneButtonView: View {
 
 #Preview {
     MicrophoneButtonView()
+        .environment(SpeechRecordingViewModel())
 }

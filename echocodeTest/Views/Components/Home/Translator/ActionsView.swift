@@ -12,35 +12,31 @@ struct ActionsView: View {
     @Environment(SpeechRecordingViewModel.self) var speechRecordingViewModel
     
     var body: some View {
-        if !speechRecordingViewModel.transcribedText.isEmpty && speechRecordingViewModel.isRecording == false {
-            Text(speechRecordingViewModel.transcribedText)
-                .foregroundStyle(.black)
-                .font(.largeTitle)
-        } else {
-            VStack(spacing: 58) {
-                TranslatorSubHeaderView()
+        VStack(spacing: 58) {
+            TranslatorSubHeaderView()
+            
+            HStack(alignment: .center, spacing: 35) {
+                if speechRecordingViewModel.isRecording {
+                    RecordingButtonView()
+                } else {
+                    MicrophoneButtonView()
+                }
                 
-                HStack(alignment: .center, spacing: 35) {
-                    if speechRecordingViewModel.isRecording {
-                        RecordingButtonView()
-                    } else {
-                        MicrophoneButtonView()
-                    }
-                    
-                    GroupBoxBase(width: 107, height: 176, cornerRadius: 16, color: .white) {
-                        VStack(alignment: .center) {
-                            ForEach(Pets.allCases, id: \.self) { pet in
-                                PetButtonView(pet: pet, color: pet.color())
-                            }
+                GroupBoxBase(width: 107, height: 176, cornerRadius: 16, color: .white) {
+                    VStack(alignment: .center) {
+                        ForEach(Pets.allCases, id: \.self) { pet in
+                            PetButtonView(pet: pet, color: pet.color())
                         }
                     }
                 }
-                .padding(.bottom, 51)
             }
+            .padding(.bottom, 51)
         }
     }
 }
 
 #Preview {
     ActionsView()
+        .environment(PetsViewModel())
+        .environment(SpeechRecordingViewModel())
 }

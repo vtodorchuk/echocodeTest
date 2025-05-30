@@ -35,4 +35,5 @@ struct PetButtonView: View {
 
 #Preview {
     PetButtonView(pet: .dog, color: .lightGreen)
+        .environment(PetsViewModel())
 }
